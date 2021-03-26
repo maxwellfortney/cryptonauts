@@ -1,5 +1,5 @@
 {
-    "name": "svelte-tailwind-box",
+    "name": "cryptonauts",
     "version": "1.0.0",
     "description": "Truffle box with Svelte, Tailwind, and Rollup",
     "scripts": {
@@ -29,11 +29,21 @@
         "tailwindcss": "^2.0.3"
     },
     "dependencies": {
+        "@openzeppelin/contracts": "^4.0.0",
+        "@rollup/plugin-image": "^2.0.6",
+        "@truffle/hdwallet-provider": "^1.2.2",
+        "@walletconnect/web3-provider": "^1.4.0",
+        "bn.js": "^5.2.0",
+        "fortmatic": "^2.2.1",
         "sirv-cli": "^1.0.11",
-        "svelte-web3": "^1.2.9"
+        "svelte-resize-observer": "^1.1.0",
+        "svelte-spa-router": "^3.1.0",
+        "svelte-web3": "^1.2.9",
+        "three": "^0.126.1",
+        "web3modal": "^1.9.3"
     },
     "repository": {
         "type": "git",
         "url": "https://github.com/maxwellfortney/svelte-tailwind-box.git"
-      }
+    }
 }

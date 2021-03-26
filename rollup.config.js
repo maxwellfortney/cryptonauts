@@ -1,11 +1,12 @@
 import svelte from "rollup-plugin-svelte";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
-import json from '@rollup/plugin-json';
+import json from "@rollup/plugin-json";
 import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
 import css from "rollup-plugin-css-only";
 import sveltePreprocess from "svelte-preprocess";
+import image from "@rollup/plugin-image";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -42,7 +43,8 @@ export default {
         name: "app",
         file: "public/build/bundle.js",
     },
-    plugins: [        
+    plugins: [
+        image(),
         svelte({
             preprocess: sveltePreprocess({
                 postcss: {
@@ -71,7 +73,6 @@ export default {
         }),
         json(),
         commonjs(),
-        
 
         // In dev mode, call `npm run start` once
         // the bundle has been generated

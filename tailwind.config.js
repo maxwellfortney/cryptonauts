@@ -4,9 +4,16 @@ module.exports = {
         mode: "all",
         content: ["./public/index.html", "./src/**/*.svelte"],
     },
-    darkMode: false, // or 'media' or 'class'
+    darkMode: false,
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                sans: ["Roboto"],
+            },
+            colors: {
+                "Cryptonauts-DarkBlue": "#00102A",
+            },
+        },
     },
     variants: {
         extend: {},
