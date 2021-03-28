@@ -4,7 +4,7 @@
 </script>
 
 <div
-    class="flex flex-col items-center justify-center flex-auto w-11/12 realtive heroContainer"
+    class="flex flex-col items-center justify-center flex-auto w-11/12 heroContainer"
 >
     <div class="flex flex-col items-center justify-center heroTextContainer">
         <h1 class="text-4xl font-bold text-center 2xl:text-5xl">

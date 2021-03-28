@@ -17,6 +17,8 @@
         "@rollup/plugin-commonjs": "^17.1.0",
         "@rollup/plugin-json": "^4.1.0",
         "@rollup/plugin-node-resolve": "^11.2.0",
+        "@rollup/plugin-url": "^6.0.0",
+        "@truffle/hdwallet-provider": "^1.2.2",
         "autoprefixer": "^10.2.5",
         "postcss": "^8.2.8",
         "rollup": "^2.41.2",
@@ -31,7 +33,6 @@
     "dependencies": {
         "@openzeppelin/contracts": "^4.0.0",
         "@rollup/plugin-image": "^2.0.6",
-        "@truffle/hdwallet-provider": "^1.2.2",
         "@walletconnect/web3-provider": "^1.4.0",
         "bn.js": "^5.2.0",
         "fortmatic": "^2.2.1",

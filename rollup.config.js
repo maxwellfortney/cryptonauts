@@ -7,6 +7,7 @@ import { terser } from "rollup-plugin-terser";
 import css from "rollup-plugin-css-only";
 import sveltePreprocess from "svelte-preprocess";
 import image from "@rollup/plugin-image";
+import url from "@rollup/plugin-url";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -45,6 +46,9 @@ export default {
     },
     plugins: [
         image(),
+        url({
+            include: ["**/*.mp3"],
+        }),
         svelte({
             preprocess: sveltePreprocess({
                 postcss: {

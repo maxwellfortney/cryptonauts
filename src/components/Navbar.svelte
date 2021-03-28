@@ -7,15 +7,15 @@
 </script>
 
 <div class="flex items-center justify-between w-11/12 Navbar">
-    <a href="/" class="text-4xl font-black">Cryptonauts</a>
+    <a href="/#/" class="text-4xl font-black">Cryptonauts</a>
     <div class="flex items-center">
-        <a href="/mining" class="mr-8 font-semibold">Mining</a>
-        <a href="/info" class="mr-8 font-semibold">Info</a>
+        <a href="/#/mining" class="mr-8 font-semibold">Mining</a>
+        <a href="/#/mining" class="mr-8 font-semibold">Info</a>
 
         {#if $selectedAccount}
             <a
-                class="flex items-center px-3.5 font-semibold text-black bg-white rounded-lg py-2.5"
-                href="/inventory">{$selectedAccount.substr(0, 10)}...</a
+                class="riseOnHover transition flex items-center px-3.5 font-semibold text-black bg-white rounded-lg py-2.5"
+                href="/#/inventory">{$selectedAccount.substr(0, 10)}...</a
             >
         {:else if $isWaitingForAccount}
             <div
@@ -26,7 +26,7 @@
         {:else}
             <button
                 on:click={promptForMetaMask}
-                class="flex items-center px-8 font-semibold text-black bg-white rounded-lg py-2.5"
+                class="riseOnHover transition flex items-center px-8 font-semibold text-black bg-white rounded-lg py-2.5"
             >
                 Login
             </button>
@@ -47,5 +47,8 @@
         width: 25px;
         height: 25px;
         animation: spin 1s linear infinite;
+    }
+    .riseOnHover:hover {
+        transform: translateY(-3px);
     }
 </style>

@@ -1,17 +1,21 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 
 contract Cryptonauts is ERC721Enumerable, Ownable {
     bytes32 public LAST_HASH;
     address payable wallet;
+    uint public firstLaunch;
+
+    mapping(address => uint) public cryptonautLaunchDates;
 
     constructor(address payable _wallet) ERC721("Cryptonauts", "CNAUTS") {
         wallet = _wallet;
-        LAST_HASH = "";
+        firstLaunch = block.timestamp + 1 weeks;
     }
 
     function changeWallet(address payable _newWallet) public onlyOwner {
@@ -73,5 +77,19 @@ contract Cryptonauts is ERC721Enumerable, Ownable {
 
         emit Mined(tokenId, hash);
         wallet.transfer(msg.value);
+    }
+
+    // Burn and add to launch list
+    function burn(uint256 tokenId) public {
+        //solhint-disable-next-line max-line-length
+        require(_isApprovedOrOwner(msg.sender, tokenId), "ERC721Burnable: caller is not owner nor approved");
+        _burn(tokenId);
+
+        uint myLaunchDate = firstLaunch;
+        while(block.timestamp >  myLaunchDate) {
+            myLaunchDate += 1 weeks;
+        }
+
+        cryptonautLaunchDates[msg.sender] = myLaunchDate;
     }
 }

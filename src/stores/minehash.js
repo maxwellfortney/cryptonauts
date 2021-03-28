@@ -16,10 +16,8 @@ export function generationOf(_tokenId) {
     return Math.floor(Math.log2(_tokenId));
 }
 
-export function getDifficulty(tokenId) {
-    console.log(tokenId);
-    const generation = generationOf(tokenId);
-    console.log(generation);
+function getDifficulty(tokenId) {
+    const generation = generationOf(parseInt(tokenId));
     let difficulty = BASE_DIFFICULTY.div(
         new BN(Math.pow(DIFFICULTY_RAMP, generation))
     );
@@ -37,20 +35,20 @@ function Hash(address, prev, nonce) {
     );
 }
 
-export function AttemptMine(highestId, address, prev_hash, nonce) {
-    const generation = getGenerationForTokenId(highestId + 1);
-    const difficulty = getDifficultyForGeneration(generation);
-
-    // console.log(difficulty);
+export function AttemptMine(tokenId, address, prev_hash, nonce) {
+    // console.log("Nonce: ", nonce);
+    // console.log("TokenID: ", tokenId);
+    // console.log("Address: ", address);
+    // console.log("Prevhash: ", prev_hash);
+    const difficulty = getDifficulty(tokenId);
     const _hash = Hash(
         cleanAddress(address),
         prev_hash ? prev_hash : "",
         nonce
     );
-    // console.log(_hash.slice(2));
+    // console.log(_hash.slice(2))
     const hash = new BN(_hash.slice(2), 16);
-
-    // console.log(hash.lt(difficulty));
+    // console.log(hash.lt(difficulty))
     return hash.lt(difficulty);
 }
 
